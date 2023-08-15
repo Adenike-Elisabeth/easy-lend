@@ -14,11 +14,13 @@ import com.decagon.loanagreementservice.services.LoanOfferClient;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -26,7 +28,7 @@ import java.util.Objects;
 public class BorrowerServiceImpl implements BorrowerService {
     private final LoanOfferClient loanOfferClient;
     private final AgreementRepository repository;
-    private final Modelmapper modelmapper;
+    private final ModelMapper modelmapper;
     private final JwtUtils jwtUtils;
 
 
@@ -83,7 +85,7 @@ public class BorrowerServiceImpl implements BorrowerService {
     @Override
     public List<LoanOffer> getAllLoanoffer() {
         return repository.findAll()
-                .stream().map(()-> model);
+                .stream().map((c)-> modelmapper.map(c,LoanOffer.class)).collect(Collectors.toList());
     }
 
 

@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @RequiredArgsConstructor
@@ -25,6 +26,7 @@ import java.util.Objects;
 public class BorrowerServiceImpl implements BorrowerService {
     private final LoanOfferClient loanOfferClient;
     private final AgreementRepository repository;
+    private final Modelmapper modelmapper;
     private final JwtUtils jwtUtils;
 
 
@@ -76,6 +78,12 @@ public class BorrowerServiceImpl implements BorrowerService {
             // Handle error case
             throw new RuntimeException("Failed to retrieve loan offer.");
         }
+    }
+
+    @Override
+    public List<LoanOffer> getAllLoanoffer() {
+        return repository.findAll()
+                .stream().map(()-> model);
     }
 
 

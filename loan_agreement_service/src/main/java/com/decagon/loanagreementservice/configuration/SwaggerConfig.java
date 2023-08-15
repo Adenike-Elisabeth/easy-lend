@@ -24,7 +24,7 @@ public class SwaggerConfig {
                 .group("borrower-api")
                 .pathsToMatch("/api/v1/borrower/**")
                 .build();
-    }
+    } 
 
     @Bean
     public GroupedOpenApi lenderApi() {

@@ -9,8 +9,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Lending-Service" />
         <module name="Profile-Management-Service" />
-        <module name="Loan_and_disbursement_Service" />
         <module name="user-registration-service" />
+        <module name="Loan_and_disbursement_Service" />
         <module name="loan_agreement_service" />
         <module name="Borrower-Service" />
       </profile>
